@@ -1,10 +1,12 @@
-def call(version, log, uclamp_min, uclamp_max, num_parallel_jobs) {
+def call(config, uclamp_min, uclamp_max, num_parallel_jobs) {
 	sh """
+		# ARCH and CROSS_COMPILE are set by job params and exported
+		# automatically
+
 		pushd linux
-		git checkout "${version}"
-		make defconfig
+		make "${config}"
 		uclampset -m ${uclamp_min} -M ${uclamp_max} \
-			/usr/bin/time -o "../${log}" -p make -j ${num_parallel_jobs}
+			make -j ${num_parallel_jobs}
 		popd
 	"""
 }

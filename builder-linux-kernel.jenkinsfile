@@ -9,18 +9,21 @@ pipeline {
 		}
 		stage('Checkout') {
 			steps {
-				checkout_linux_kernel()
+				checkout_linux_kernel(env.GIT_REMOTE, env.GIT_VERSION)
 				clobber_linux_kernel()
 			}
 		}
 		stage('Compile') {
 			steps {
-				compile_linux_kernel("v5.15", "kernel_compile_test.log", env.UCLAMP_MIN, env.UCLAMP_MAX, env.NUM_PARALLEL_JOBS)
+				compile_linux_kernel(env.DEFCONFIG, env.UCLAMP_MIN, env.UCLAMP_MAX, env.NUM_PARALLEL_JOBS)
 			}
 		}
 		stage('Archive') {
 			steps {
-				archiveArtifacts artifacts: 'vmlinux', followSymlinks: false
+				archiveArtifacts artifacts: 'linux/.config', followSymlinks: false
+				archiveArtifacts artifacts: 'linux/vmlinux', followSymlinks: false
+				archiveArtifacts artifacts: 'linux/arch/*/boot/Image*', followSymlinks: false, allowEmptyArchive: true
+				archiveArtifacts artifacts: 'linux/arch/*/boot/*Image', followSymlinks: false, allowEmptyArchive: true
 			}
 		}
 	}
