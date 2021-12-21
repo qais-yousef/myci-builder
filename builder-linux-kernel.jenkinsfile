@@ -1,0 +1,33 @@
+pipeline {
+	agent { label params.NODE }
+
+	stages {
+		stage('Verify') {
+			steps {
+				verify_linux()
+			}
+		}
+		stage('Checkout') {
+			steps {
+				checkout_linux_kernel()
+				clobber_linux_kernel()
+			}
+		}
+		stage('Compile') {
+			steps {
+				compile_linux_kernel("v5.15", "kernel_compile_test.log", env.UCLAMP_MIN, env.UCLAMP_MAX, env.NUM_PARALLEL_JOBS)
+			}
+		}
+		stage('Archive') {
+			steps {
+				archiveArtifacts artifacts: 'vmlinux', followSymlinks: false
+			}
+		}
+	}
+	post {
+		always {
+			clobber_linux_kernel()
+		}
+	}
+}
+
