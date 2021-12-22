@@ -7,7 +7,7 @@ def call(branch, num_parallel_jobs) {
 		repo init -u https://android.googlesource.com/platform/manifest \
 			-b ${branch} --partial-clone --clone-filter=blob:limit=10M
 
-		repo sync -cd -j ${num_parallel_jobs}
+		repo sync -cdq -j ${num_parallel_jobs}
 
 		popd
 	"""
