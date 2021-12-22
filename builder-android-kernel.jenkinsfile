@@ -20,7 +20,8 @@ pipeline {
 		}
 		stage('Archive') {
 			steps {
-				archiveArtifacts artifacts: 'android-kernel/output', followSymlinks: false, allowEmptyArchive: true
+				archive_android_kernel()
+				archiveArtifacts artifacts: '*.tar.xz', followSymlinks: false
 			}
 		}
 	}
