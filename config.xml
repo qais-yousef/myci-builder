@@ -18,7 +18,7 @@
               </traits>
             </scm>
           </retriever>
-          <defaultVersion>dev</defaultVersion>
+          <defaultVersion>main</defaultVersion>
           <implicit>true</implicit>
           <allowVersionOverride>true</allowVersionOverride>
           <includeInChangesets>true</includeInChangesets>
