@@ -4,8 +4,11 @@ Build jobs to create tools and compile kernels, AOSP, etc for various targets
 # Pre-requisites
 
 ```
+sudo apt install libncurses5
 sudo apt install repo
 ```
+
+## repo
 
 If the version is too old or unavailable check instructions for getting latest
 version
