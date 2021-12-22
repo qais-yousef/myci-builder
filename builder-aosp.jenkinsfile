@@ -1,0 +1,33 @@
+pipeline {
+	agent { label params.NODE }
+
+	stages {
+		stage('Verify') {
+			steps {
+				verify_linux()
+			}
+		}
+		stage('Checkout') {
+			steps {
+				checkout_aosp(env.BRANCH, env.NUM_PARALLEL_JOBS)
+				clobber_aosp()
+			}
+		}
+		stage('Compile') {
+			steps {
+				compile_aosp(env.TARGET, env.BUILDTYPE)
+			}
+		}
+		stage('Archive') {
+			steps {
+				archiveArtifacts artifacts: 'aosp/output', followSymlinks: false, allowEmptyArchive: true
+			}
+		}
+	}
+	post {
+		always {
+			clobber_aosp()
+		}
+	}
+}
+
