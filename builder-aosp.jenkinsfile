@@ -15,7 +15,7 @@ pipeline {
 		}
 		stage('Compile') {
 			steps {
-				compile_aosp(env.TARGET, env.BUILDTYPE)
+				compile_aosp(env.TARGET)
 			}
 		}
 		stage('Archive') {

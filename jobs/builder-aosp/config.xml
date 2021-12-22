@@ -52,21 +52,11 @@
           <description>Build AOSP for which product?</description>
           <choices class="java.util.Arrays$ArrayList">
             <a class="string-array">
-              <string>aosp_arm</string>
-              <string>oriole</string>
-            </a>
-          </choices>
-        </hudson.model.ChoiceParameterDefinition>
-        <hudson.model.ChoiceParameterDefinition>
-          <name>BUILDTYPE</name>
-          <description>user: Limited access; suited for production
-userdebug: Like user but with root access and debug capability; preferred for debugging
-eng: Development configuration with additional debugging tools</description>
-          <choices class="java.util.Arrays$ArrayList">
-            <a class="string-array">
-              <string>user</string>
-              <string>userdebug</string>
-              <string>eng</string>
+              <string>aosp_oriole-userdebug</string>
+              <string>aosp_redfin-userdebug</string>
+              <string>aosp_flame-userdebug</string>
+              <string>pixel3_mainline-userdebug</string>
+              <string>db845c-userdebug</string>
             </a>
           </choices>
         </hudson.model.ChoiceParameterDefinition>

@@ -1,9 +1,9 @@
-def call(target, buildtype) {
+def call(target) {
 	sh """
 		pushd aosp
 
 		source build/envsetup.sh
-		lunch ${target}-${buildtype}
+		lunch ${target}
 		m
 
 		popd
