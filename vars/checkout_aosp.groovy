@@ -4,8 +4,7 @@ def call(branch, num_parallel_jobs) {
 
 		pushd aosp
 
-		repo init -u https://android.googlesource.com/platform/manifest \
-			-b ${branch} --partial-clone --clone-filter=blob:limit=10M
+		repo init -u https://android.googlesource.com/platform/manifest -b ${branch}
 
 		repo sync -cdq -j ${num_parallel_jobs}
 
