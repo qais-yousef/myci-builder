@@ -4,9 +4,13 @@ def call(branch, num_parallel_jobs) {
 
 		pushd aosp
 
-		repo init -u https://android.googlesource.com/platform/manifest -b ${branch}
+		if [ ! -e .${branch} ]; then
 
-		repo sync -cdq -j ${num_parallel_jobs}
+			repo init -u https://android.googlesource.com/platform/manifest -b ${branch}
+			repo sync -cd -j ${num_parallel_jobs}
+			touch .${branch}
+
+		fi
 
 		popd
 	"""
