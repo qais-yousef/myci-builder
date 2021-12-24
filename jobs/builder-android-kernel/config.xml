@@ -36,6 +36,11 @@
           <defaultValue>8</defaultValue>
           <trim>false</trim>
         </hudson.model.StringParameterDefinition>
+        <hudson.model.BooleanParameterDefinition>
+          <name>FORCE_REPO_SYNC</name>
+          <description>By default we avoid repo sync if the branch was already checked out. Tick this box to force a sync anyway.</description>
+          <defaultValue>false</defaultValue>
+        </hudson.model.BooleanParameterDefinition>
         <hudson.model.ChoiceParameterDefinition>
           <name>BRANCH</name>
           <description>The branch specifies the device we build for. Pixel 6, Pixel 5 and Pixel 4 are the available ones.

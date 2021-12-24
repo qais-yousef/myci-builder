@@ -9,7 +9,7 @@ pipeline {
 		}
 		stage('Checkout') {
 			steps {
-				checkout_aosp(env.BRANCH, env.NUM_PARALLEL_JOBS)
+				checkout_aosp(env.BRANCH, env.NUM_PARALLEL_JOBS, env.FORCE_REPO_SYNC)
 				clobber_aosp()
 			}
 		}

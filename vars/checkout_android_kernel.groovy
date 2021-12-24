@@ -1,8 +1,12 @@
-def call(branch, num_parallel_jobs) {
+def call(branch, num_parallel_jobs, force_sync) {
 	sh """
 		mkdir -p android-kernel
 
 		pushd android-kernel
+
+		if [ "${force_sync}" == "true" ]; then
+			rm -f .${branch}
+		fi
 
 		if [ ! -e .${branch} ]; then
 

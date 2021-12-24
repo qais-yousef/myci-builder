@@ -9,7 +9,7 @@ pipeline {
 		}
 		stage('Checkout') {
 			steps {
-				checkout_android_kernel(env.BRANCH, env.NUM_PARALLEL_JOBS)
+				checkout_android_kernel(env.BRANCH, env.NUM_PARALLEL_JOBS, env.FORCE_REPO_SYNC)
 				clobber_android_kernel()
 			}
 		}

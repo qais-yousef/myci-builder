@@ -36,6 +36,11 @@
           <defaultValue>8</defaultValue>
           <trim>false</trim>
         </hudson.model.StringParameterDefinition>
+        <hudson.model.BooleanParameterDefinition>
+          <name>FORCE_REPO_SYNC</name>
+          <description>By default we avoid repo sync if the branch was already checked out. Tick this box to force a sync anyway.</description>
+          <defaultValue>false</defaultValue>
+        </hudson.model.BooleanParameterDefinition>
         <hudson.model.ChoiceParameterDefinition>
           <name>BRANCH</name>
           <description>Which AOSP branch to sync and build.</description>
