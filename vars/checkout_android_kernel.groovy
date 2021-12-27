@@ -11,7 +11,7 @@ def call(branch, num_parallel_jobs, force_sync) {
 		if [ ! -e .${branch} ]; then
 
 			repo init -u https://android.googlesource.com/kernel/manifest -b ${branch}
-			repo sync -cd -j ${num_parallel_jobs}
+			repo sync -cd --force-sync --fail-fast -j ${num_parallel_jobs}
 			touch .${branch}
 
 		fi
