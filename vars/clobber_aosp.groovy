@@ -4,6 +4,7 @@ def call() {
 			pushd aosp
 			source build/envsetup.sh
 			m clean
+			repo forall -c git clean -xdf
 			popd
 		fi
 	"""
