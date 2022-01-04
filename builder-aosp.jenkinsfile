@@ -10,7 +10,11 @@ pipeline {
 		stage('Checkout') {
 			steps {
 				checkout_aosp(env.BRANCH, env.NUM_PARALLEL_JOBS, env.FORCE_REPO_SYNC)
-				clobber_aosp()
+			}
+		}
+		stage('Clean') {
+			steps {
+				clobber_aosp(env.CLEAN_BUILD)
 			}
 		}
 		stage('Compile') {
@@ -22,11 +26,6 @@ pipeline {
 			steps {
 				archiveArtifacts artifacts: 'aosp/output', followSymlinks: false, allowEmptyArchive: true
 			}
-		}
-	}
-	post {
-		always {
-			clobber_aosp()
 		}
 	}
 }

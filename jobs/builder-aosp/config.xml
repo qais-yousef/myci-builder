@@ -37,6 +37,11 @@
           <trim>false</trim>
         </hudson.model.StringParameterDefinition>
         <hudson.model.BooleanParameterDefinition>
+          <name>CLEAN_BUILD</name>
+          <description>Do a fresh clean build. By default we keep things hanging around to avoid a full rebuild in case of unexpected error.</description>
+          <defaultValue>false</defaultValue>
+        </hudson.model.BooleanParameterDefinition>
+        <hudson.model.BooleanParameterDefinition>
           <name>FORCE_REPO_SYNC</name>
           <description>By default we avoid repo sync if the branch was already checked out. Tick this box to force a sync anyway.</description>
           <defaultValue>false</defaultValue>
