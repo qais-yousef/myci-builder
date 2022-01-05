@@ -19,7 +19,7 @@ pipeline {
 		}
 		stage('Compile') {
 			steps {
-				compile_aosp(env.TARGET)
+				compile_aosp(env.TARGET, env.NUM_PARALLEL_JOBS)
 			}
 		}
 		stage('Archive') {
