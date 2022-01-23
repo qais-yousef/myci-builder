@@ -37,6 +37,11 @@
           <trim>false</trim>
         </hudson.model.StringParameterDefinition>
         <hudson.model.BooleanParameterDefinition>
+          <name>PURGE</name>
+          <description>Purge tree and do a complete fresh checkout.</description>
+          <defaultValue>false</defaultValue>
+        </hudson.model.BooleanParameterDefinition>
+        <hudson.model.BooleanParameterDefinition>
           <name>CLEAN_BUILD</name>
           <description>Do a fresh clean build. By default we keep things hanging around to avoid a full rebuild in case of unexpected error.</description>
           <defaultValue>false</defaultValue>
@@ -51,9 +56,9 @@
           <description>Which AOSP branch to sync and build.</description>
           <choices class="java.util.Arrays$ArrayList">
             <a class="string-array">
-              <string>master</string>
-              <string>android-12.0.0_r21</string>
+              <string>android-12.0.0_r27</string>
               <string>android-11.0.0_r48</string>
+              <string>master</string>
             </a>
           </choices>
         </hudson.model.ChoiceParameterDefinition>
@@ -74,7 +79,7 @@
     </hudson.model.ParametersDefinitionProperty>
   </properties>
   <definition class="org.jenkinsci.plugins.workflow.cps.CpsScmFlowDefinition" plugin="workflow-cps@2648.va9433432b33c">
-    <scm class="hudson.plugins.git.GitSCM" plugin="git@4.10.1">
+    <scm class="hudson.plugins.git.GitSCM" plugin="git@4.10.3">
       <configVersion>2</configVersion>
       <userRemoteConfigs>
         <hudson.plugins.git.UserRemoteConfig>

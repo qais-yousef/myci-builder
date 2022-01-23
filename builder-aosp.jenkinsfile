@@ -7,6 +7,16 @@ pipeline {
 				verify_linux()
 			}
 		}
+		stage('Purge') {
+			when {
+				expression {
+					return env.PURGE == 'true';
+				}
+			}
+			steps {
+				cleanWs()
+			}
+		}
 		stage('Checkout') {
 			steps {
 				checkout_aosp(env.BRANCH, env.NUM_PARALLEL_JOBS, env.FORCE_REPO_SYNC)
