@@ -23,8 +23,13 @@ pipeline {
 			}
 		}
 		stage('Clean') {
+			when {
+				expression {
+					return env.CLEAN_BUILD == 'true';
+				}
+			}
 			steps {
-				clobber_aosp(env.CLEAN_BUILD)
+				clobber_aosp()
 			}
 		}
 		stage('Compile') {
