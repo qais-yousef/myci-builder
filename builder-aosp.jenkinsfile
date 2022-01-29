@@ -37,10 +37,16 @@ pipeline {
 				compile_aosp(env.TARGET, env.NUM_PARALLEL_JOBS)
 			}
 		}
+		stage('Save changes') {
+			steps {
+				repo_save_changes(env.BRANCH)
+			}
+		}
 		stage('Archive') {
 			steps {
 				archive_aosp()
 				archiveArtifacts artifacts: '*.tar.xz', followSymlinks: false
+				archiveArtifacts artifacts: 'aosp/**/*--myci--*.patch', followSymlinks: false
 			}
 		}
 	}
