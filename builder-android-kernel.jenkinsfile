@@ -20,7 +20,7 @@ pipeline {
 		}
 		stage('Save changes') {
 			steps {
-				repo_save_changes(env.BRANCH)
+				repo_save_changes("android-kernel", env.BRANCH)
 			}
 		}
 		stage('Archive') {
