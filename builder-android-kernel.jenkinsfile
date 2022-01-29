@@ -18,10 +18,16 @@ pipeline {
 				compile_android_kernel()
 			}
 		}
+		stage('Save changes') {
+			steps {
+				repo_save_changes(env.BRANCH)
+			}
+		}
 		stage('Archive') {
 			steps {
 				archive_android_kernel()
 				archiveArtifacts artifacts: '*.tar.xz', followSymlinks: false
+				archiveArtifacts artifacts: 'android-kernel/**/*--myci.patch', followSymlinks: false, allowEmptyArchive: true
 			}
 		}
 	}
