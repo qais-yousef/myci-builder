@@ -34,6 +34,7 @@ pipeline {
 	post {
 		always {
 			clobber_android_kernel()
+			sh "rm -f *.tar.xz"
 		}
 	}
 }
