@@ -47,6 +47,7 @@
 More branches are available: https://source.android.com/setup/build/building-kernels</description>
           <choices class="java.util.Arrays$ArrayList">
             <a class="string-array">
+              <string>gs-android-gs-raviole-mainline</string>
               <string>android-gs-raviole-5.10-android12-qpr1-d</string>
               <string>android-msm-redbull-4.19-android12-qpr1</string>
               <string>android-msm-coral-4.14-android12-qpr1</string>
@@ -58,7 +59,7 @@ More branches are available: https://source.android.com/setup/build/building-ker
     </hudson.model.ParametersDefinitionProperty>
   </properties>
   <definition class="org.jenkinsci.plugins.workflow.cps.CpsScmFlowDefinition" plugin="workflow-cps@2648.va9433432b33c">
-    <scm class="hudson.plugins.git.GitSCM" plugin="git@4.10.1">
+    <scm class="hudson.plugins.git.GitSCM" plugin="git@4.10.3">
       <configVersion>2</configVersion>
       <userRemoteConfigs>
         <hudson.plugins.git.UserRemoteConfig>
