@@ -34,7 +34,7 @@ pipeline {
 		}
 		stage('Compile') {
 			steps {
-				compile_aosp(env.TARGET, env.NUM_PARALLEL_JOBS)
+				compile_aosp(env.TARGET, env.NUM_PARALLEL_JOBS, env.BUILD_UIBENCH, env.BUILD_JANKBENCH)
 			}
 		}
 		stage('Save changes') {
@@ -47,6 +47,8 @@ pipeline {
 				archive_aosp()
 				archiveArtifacts artifacts: '*.tar.xz', followSymlinks: false
 				archiveArtifacts artifacts: 'aosp/**/*--myci.patch', followSymlinks: false, allowEmptyArchive: true
+				archiveArtifacts artifacts: 'aosp/out/target/product/**/UiBench.apk', followSymlinks: false, allowEmptyArchive: true
+				archiveArtifacts artifacts: 'aosp/out/target/product/**/JankBench.apk', followSymlinks: false, allowEmptyArchive: true
 			}
 		}
 	}
