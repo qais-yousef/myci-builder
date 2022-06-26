@@ -1,7 +1,22 @@
 pipeline {
 	agent { label params.NODE }
 
+	parameters {
+		string(name: 'NODE', defaultValue: '', description: 'The DUT to run on. Must be Android based DUT.')
+		string(name: 'DESCRIPTION', defaultValue: '', description: 'Describe your experiment so that we have a meaningful name for this run to return to')
+	}
+
+	options {
+		buildDiscarder logRotator(artifactDaysToKeepStr: '7', artifactNumToKeepStr: '10', daysToKeepStr: '7', numToKeepStr: '10')
+	}
+
 	stages {
+		stage('Init') {
+			steps {
+				verify_params()
+				set_description()
+			}
+		}
 		stage('Verify') {
 			steps {
 				verify_linux()
