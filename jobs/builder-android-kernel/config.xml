@@ -22,31 +22,6 @@
           <description>The DUT to run on. Must be Linux based DUT.</description>
           <trim>false</trim>
         </hudson.model.StringParameterDefinition>
-        <hudson.model.StringParameterDefinition>
-          <name>NUM_PARALLEL_JOBS</name>
-          <description>Parameter to pass to repo sync -c -j ${NUM_PARALLEL_JOBS}</description>
-          <defaultValue>8</defaultValue>
-          <trim>false</trim>
-        </hudson.model.StringParameterDefinition>
-        <hudson.model.BooleanParameterDefinition>
-          <name>FORCE_REPO_SYNC</name>
-          <description>By default we avoid repo sync if the branch was already checked out. Tick this box to force a sync anyway.</description>
-          <defaultValue>false</defaultValue>
-        </hudson.model.BooleanParameterDefinition>
-        <hudson.model.ChoiceParameterDefinition>
-          <name>BRANCH</name>
-          <description>The branch specifies the device we build for. Pixel 6, Pixel 5 and Pixel 4 are the available ones.
-More branches are available: https://source.android.com/setup/build/building-kernels</description>
-          <choices class="java.util.Arrays$ArrayList">
-            <a class="string-array">
-              <string>gs-android-gs-raviole-mainline</string>
-              <string>android-gs-raviole-5.10-android12-qpr1-d</string>
-              <string>android-msm-redbull-4.19-android12-qpr1</string>
-              <string>android-msm-coral-4.14-android12-qpr1</string>
-              <string>common-android-mainline </string>
-            </a>
-          </choices>
-        </hudson.model.ChoiceParameterDefinition>
       </parameterDefinitions>
     </hudson.model.ParametersDefinitionProperty>
   </properties>

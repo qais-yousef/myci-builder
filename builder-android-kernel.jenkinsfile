@@ -2,8 +2,38 @@ pipeline {
 	agent { label params.NODE }
 
 	parameters {
-		string(name: 'NODE', defaultValue: '', description: 'The DUT to run on. Must be Android based DUT.')
-		string(name: 'DESCRIPTION', defaultValue: '', description: 'Describe your experiment so that we have a meaningful name for this run to return to')
+		string (
+			name: 'NODE',
+			defaultValue: '',
+			description: 'The DUT to run on. Must be Android based DUT.'
+		)
+		string (
+			name: 'DESCRIPTION',
+			defaultValue: '',
+			description: 'Describe your experiment so that we have a meaningful name for this run to return to.'
+		)
+		string (
+			name: 'NUM_PARALLEL_JOBS',
+			defaultValue: '8',
+			description: 'Parameter to pass to repo sync -c -j ${NUM_PARALLEL_JOBS}.'
+		)
+		booleanParam (
+			name: 'FORCE_REPO_SYNC',
+			defaultValue: false,
+			description: 'By default we avoid repo sync if the branch was already checked out. Tick this box to force a sync anyway.'
+		)
+		choice (
+			name: 'BRANCH',
+			choices: [
+				'gs-android-gs-raviole-mainline',
+				'android-gs-raviole-5.10-android12-qpr1-d',
+				'android-msm-redbull-4.19-android12-qpr1',
+				'android-msm-coral-4.14-android12-qpr1',
+				'common-android-mainline '
+			],
+			description: '''The branch specifies the device we build for. Pixel 6, Pixel 5 and Pixel 4 are the available ones.
+					More branches are available: https://source.android.com/setup/build/building-kernels'''
+		)
 	}
 
 	options {
@@ -13,7 +43,7 @@ pipeline {
 	stages {
 		stage('Init') {
 			steps {
-				verify_params()
+				verify_params(!env.NUM_PARALLEL_JOBS || !env.FORCE_REPO_SYNC || !env.BRANCH)
 				set_description()
 			}
 		}

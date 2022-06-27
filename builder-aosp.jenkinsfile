@@ -2,8 +2,64 @@ pipeline {
 	agent { label params.NODE }
 
 	parameters {
-		string(name: 'NODE', defaultValue: '', description: 'The DUT to run on. Must be Android based DUT.')
-		string(name: 'DESCRIPTION', defaultValue: '', description: 'Describe your experiment so that we have a meaningful name for this run to return to')
+		string (
+			name: 'NODE',
+			defaultValue: '',
+			description: 'The DUT to run on. Must be Android based DUT.'
+		)
+		string (
+			name: 'DESCRIPTION',
+			defaultValue: '',
+			description: 'Describe your experiment so that we have a meaningful name for this run to return to.'
+		)
+		string (
+			name: 'NUM_PARALLEL_JOBS',
+			defaultValue: '8', description: 'Parameter to pass to repo sync -c -j ${NUM_PARALLEL_JOBS}.'
+		)
+		booleanParam (
+			name: 'BUILD_UIBENCH',
+			defaultValue: true,
+			description: 'Generate Uibench.apk - User Interface Benchmark.'
+		)
+		booleanParam (
+			name: 'BUILD_JANKBENCH',
+			defaultValue: true,
+			description: 'Generate JankBench.apk - Display Pipeline Benchmark.'
+		)
+		booleanParam (
+			name: 'PURGE',
+			defaultValue: false,
+			description: 'Purge tree and do a complete fresh checkout.'
+		)
+		booleanParam (
+			name: 'CLEAN_BUILD',
+			defaultValue: false,
+			description: 'Do a fresh clean build. By default we keep things hanging around to avoid a full rebuild in case of unexpected error.'
+		)
+		booleanParam (
+			name: 'FORCE_REPO_SYNC',
+			defaultValue: false, description: 'By default we avoid repo sync if the branch was already checked out. Tick this box to force a sync anyway.'
+		)
+		choice (
+			name: 'BRANCH',
+			choices: [
+				'android-12.0.0_r27',
+				'android-11.0.0_r48',
+				'master'
+			],
+			description: 'Which AOSP branch to sync and build.'
+		)
+		choice (
+			name: 'TARGET',
+			choices: [
+				'aosp_oriole-userdebug',
+				'aosp_redfin-userdebug',
+				'aosp_flame-userdebug',
+				'pixel3_mainline-userdebug',
+				'db845c-userdebug'
+			],
+			description: 'Build AOSP for which product?'
+		)
 	}
 
 	options {
@@ -13,7 +69,14 @@ pipeline {
 	stages {
 		stage('Init') {
 			steps {
-				verify_params()
+				verify_params(!env.NUM_PARALLEL_JOBS ||
+					      !env.BUILD_UIBENCH ||
+					      !env.BUILD_JANKBENCH ||
+					      !env.PURGE ||
+					      !env.CLEAN_BUILD ||
+					      !env.FORCE_REPO_SYNC ||
+					      !env.BRANCH ||
+					      !env.TARGET)
 				set_description()
 			}
 		}

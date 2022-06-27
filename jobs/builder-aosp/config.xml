@@ -22,61 +22,6 @@
           <description>The DUT to run on. Must be Linux based DUT.</description>
           <trim>false</trim>
         </hudson.model.StringParameterDefinition>
-        <hudson.model.StringParameterDefinition>
-          <name>NUM_PARALLEL_JOBS</name>
-          <description>Parameter to pass to repo sync -c -j ${NUM_PARALLEL_JOBS}</description>
-          <defaultValue>8</defaultValue>
-          <trim>false</trim>
-        </hudson.model.StringParameterDefinition>
-        <hudson.model.BooleanParameterDefinition>
-          <name>BUILD_UIBENCH</name>
-          <description>Generate Uibench.apk - User Interface Benchmark</description>
-          <defaultValue>true</defaultValue>
-        </hudson.model.BooleanParameterDefinition>
-        <hudson.model.BooleanParameterDefinition>
-          <name>BUILD_JANKBENCH</name>
-          <description>Generate JankBench.apk - Display Pipeline Benchmark</description>
-          <defaultValue>true</defaultValue>
-        </hudson.model.BooleanParameterDefinition>
-        <hudson.model.BooleanParameterDefinition>
-          <name>PURGE</name>
-          <description>Purge tree and do a complete fresh checkout.</description>
-          <defaultValue>false</defaultValue>
-        </hudson.model.BooleanParameterDefinition>
-        <hudson.model.BooleanParameterDefinition>
-          <name>CLEAN_BUILD</name>
-          <description>Do a fresh clean build. By default we keep things hanging around to avoid a full rebuild in case of unexpected error.</description>
-          <defaultValue>false</defaultValue>
-        </hudson.model.BooleanParameterDefinition>
-        <hudson.model.BooleanParameterDefinition>
-          <name>FORCE_REPO_SYNC</name>
-          <description>By default we avoid repo sync if the branch was already checked out. Tick this box to force a sync anyway.</description>
-          <defaultValue>false</defaultValue>
-        </hudson.model.BooleanParameterDefinition>
-        <hudson.model.ChoiceParameterDefinition>
-          <name>BRANCH</name>
-          <description>Which AOSP branch to sync and build.</description>
-          <choices class="java.util.Arrays$ArrayList">
-            <a class="string-array">
-              <string>android-12.0.0_r27</string>
-              <string>android-11.0.0_r48</string>
-              <string>master</string>
-            </a>
-          </choices>
-        </hudson.model.ChoiceParameterDefinition>
-        <hudson.model.ChoiceParameterDefinition>
-          <name>TARGET</name>
-          <description>Build AOSP for which product?</description>
-          <choices class="java.util.Arrays$ArrayList">
-            <a class="string-array">
-              <string>aosp_oriole-userdebug</string>
-              <string>aosp_redfin-userdebug</string>
-              <string>aosp_flame-userdebug</string>
-              <string>pixel3_mainline-userdebug</string>
-              <string>db845c-userdebug</string>
-            </a>
-          </choices>
-        </hudson.model.ChoiceParameterDefinition>
       </parameterDefinitions>
     </hudson.model.ParametersDefinitionProperty>
   </properties>

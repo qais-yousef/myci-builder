@@ -19,66 +19,6 @@
           <description>The DUT to run on. Must be Linux based DUT.</description>
           <trim>false</trim>
         </hudson.model.StringParameterDefinition>
-        <hudson.model.StringParameterDefinition>
-          <name>UCLAMP_MIN</name>
-          <description>Parameter to pass to uclampset -M ${UCLAMP_MIN}</description>
-          <defaultValue>0</defaultValue>
-          <trim>false</trim>
-        </hudson.model.StringParameterDefinition>
-        <hudson.model.StringParameterDefinition>
-          <name>UCLAMP_MAX</name>
-          <description>Parameter to pass to uclampset -M ${UCLAMP_MAX}</description>
-          <defaultValue>1024</defaultValue>
-          <trim>false</trim>
-        </hudson.model.StringParameterDefinition>
-        <hudson.model.StringParameterDefinition>
-          <name>NUM_PARALLEL_JOBS</name>
-          <description>Parameter to pass to make -j ${NUM_PARALLEL_JOBS}</description>
-          <defaultValue>2</defaultValue>
-          <trim>false</trim>
-        </hudson.model.StringParameterDefinition>
-        <hudson.model.ChoiceParameterDefinition>
-          <name>GIT_REMOTE</name>
-          <description>Which kernel git remote to use.</description>
-          <choices class="java.util.Arrays$ArrayList">
-            <a class="string-array">
-              <string>origin    https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git</string>
-              <string>stable   https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git</string>
-            </a>
-          </choices>
-        </hudson.model.ChoiceParameterDefinition>
-        <hudson.model.StringParameterDefinition>
-          <name>GIT_VERSION</name>
-          <description>Git branch or version to compile. Prefix with remote name to avoid ambiguity if necessary.</description>
-          <defaultValue>origin/master</defaultValue>
-          <trim>false</trim>
-        </hudson.model.StringParameterDefinition>
-        <hudson.model.StringParameterDefinition>
-          <name>DEFCONFIG</name>
-          <description>Kernel config to build</description>
-          <defaultValue>defconfig</defaultValue>
-          <trim>false</trim>
-        </hudson.model.StringParameterDefinition>
-        <hudson.model.ChoiceParameterDefinition>
-          <name>ARCH</name>
-          <description>Which ARCH to build</description>
-          <choices class="java.util.Arrays$ArrayList">
-            <a class="string-array">
-              <string>arm64</string>
-              <string>x86</string>
-            </a>
-          </choices>
-        </hudson.model.ChoiceParameterDefinition>
-        <hudson.model.ChoiceParameterDefinition>
-          <name>CROSS_COMPILE</name>
-          <description>Which gcc cross compiler to use. Empty field is for native builds.</description>
-          <choices class="java.util.Arrays$ArrayList">
-            <a class="string-array">
-              <string> </string>
-              <string>aarch64-linux-gnu-</string>
-            </a>
-          </choices>
-        </hudson.model.ChoiceParameterDefinition>
       </parameterDefinitions>
     </hudson.model.ParametersDefinitionProperty>
   </properties>
