@@ -10,7 +10,7 @@ def call() {
 		if [ "x\$build_script" == "x" ]; then
 			./build/build.sh
 		else
-			./\$build_script
+			./build_slider.sh
 		fi
 
 		popd
