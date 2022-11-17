@@ -25,6 +25,7 @@ pipeline {
 		choice (
 			name: 'BRANCH',
 			choices: [
+				'android-gs-raviole-5.10-android13',
 				'gs-android-gs-raviole-mainline',
 				'android-gs-raviole-5.10-android12-qpr1-d',
 				'android-msm-redbull-4.19-android12-qpr1',
