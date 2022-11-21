@@ -7,6 +7,8 @@ def call() {
 		# In age of GKI, this is required to not use prebuilts
 		export BUILD_KERNEL=1
 
+		export LTO=none
+
 		if [ "x\$build_script" == "x" ]; then
 			./build/build.sh
 		else
